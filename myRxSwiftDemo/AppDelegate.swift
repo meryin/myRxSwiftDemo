@@ -15,7 +15,22 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
-        // Override point for customization after application launch.
+        window = UIWindow(frame: UIScreen.main.bounds )
+        window?.backgroundColor = UIColor.gray
+        UINavigationBar.appearance().barTintColor = UIColor.white
+        let dict:NSDictionary = [NSForegroundColorAttributeName:Color("0x111111"),NSFontAttributeName : UIFont.boldSystemFont(ofSize:18)]
+        UINavigationBar.appearance().titleTextAttributes = dict as? [String : Any]
+        //2.4设置返回按钮颜色
+        UINavigationBar.appearance().tintColor = Color("0x111111")
+        
+//        UIBarButtonItem.appearance().setBackButtonTitlePositionAdjustment(UIOffsetMake(CGFloat(NSInteger.min),CGFloat(NSInteger.min)), forBarMetrics:UIBarMetrics.default);
+        //2.2导航标题文字颜色
+         
+        MBProgressHUD.initMBProgressHUD()
+        
+        window?.rootViewController = BaseTabBarViewController()
+        window?.makeKeyAndVisible()
+        window?.tintColor = UIColor.red //统一更改默认控件的颜色
         return true
     }
 

@@ -1,0 +1,37 @@
+//
+//  Eidt+ImageView.swift
+//  myRxSwiftDemo
+//
+//  Created by 尹彩霞 on 2017/12/7.
+//  Copyright © 2017年 尹彩霞. All rights reserved.
+//
+
+import UIKit
+
+import Kingfisher
+
+extension UIImageView{
+    
+    /// 快速创建 imageView
+    /// - parameter imgName:  图片名字
+    convenience init(imgName: String) {
+        self.init(image: UIImage(named:imgName))
+    }
+    
+    
+    /// - parameter withUrlString:      图片的 urlString
+    /// - parameter placeholderImgName:  默认图片的名字
+    func mb_setImage(withUrlString: String?, placeholderImgName: String?){
+        // 获取图片的 url
+        if (withUrlString != nil)
+       {
+        let url = URL(string: BaseURL + withUrlString!)
+        self.kf.setImage(with: url, placeholder: UIImage(named: placeholderImgName ?? ""), options: nil, progressBlock: nil, completionHandler: nil)
+        }
+        
+    }
+    
+    
+    
+}
+
