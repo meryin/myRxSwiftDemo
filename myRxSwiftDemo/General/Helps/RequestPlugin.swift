@@ -34,7 +34,6 @@ struct AuthPlugin: PluginType {
         var request = request
         request.timeoutInterval = 30
         request.addValue(token, forHTTPHeaderField: "token")
-        request.addValue("multipart/form-data", forHTTPHeaderField: "Content-Type")//value : "application/x-www-form-urlencoded; charset=utf-8,multipart/form-data"
         request.addValue("ios", forHTTPHeaderField: "platform")
         request.addValue("version", forHTTPHeaderField: Bundle.main.object(forInfoDictionaryKey: "CFBundleShortVersionString") as! String)
         return request

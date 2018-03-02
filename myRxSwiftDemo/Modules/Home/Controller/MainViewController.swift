@@ -28,6 +28,7 @@ class MainViewController: UIViewController {
     func initUI(){
         tableView = UITableView(frame: CGRect(x: 0.0, y: 0.0, width: WindowWidth, height: WindowHeight-50), style: UITableViewStyle.grouped).then({ (table) in
             table.contentInset = UIEdgeInsetsMake(0, 0, 50, 0)
+            table.separatorStyle = .none
         })
         self.view.addSubview(tableView)
         tableView.delegate = self
@@ -96,29 +97,29 @@ extension MainViewController:UITableViewDelegate,UITableViewDataSource{
         let cell = tableView.dequeueReusableCell(withIdentifier: "cell") as! MainTableViewCell
         let model = self.viewModel.listArray[indexPath.section]!
         let user = model.owner
+        let tag = model.tag
         cell.titleLabel?.text = model.title
         cell.userLabel?.text = user?.name
         cell.timeLabel?.text = model.pubTime
-        cell.adstraLabel?.text = model.content
+        cell.adstraLabel?.text = model.abstract
+        cell.tagLabel.text = " "+(tag?.tag_name)!+"  "
         cell.readLabel?.text = "阅读：" + "\(model.read ?? 0)"
         cell.commandLabel?.text = "评论：" + "\(model.command ?? 0)"
         cell.collectLabel?.text = "收藏：" + "\(model.collect ?? 0)"
         cell.headImg?.mb_setImage(withUrlString: user?.img, placeholderImgName: "Ico_MCustomerCenter")
         if model.image == nil
         {
-            cell.contentImg!.snp.remakeConstraints{(make) -> Void in
-                make.width.height.equalTo(0)
-                make.right.equalTo(-10)
+            cell.contentImg?.snp.updateConstraints{(make) -> Void in
+                make.width.equalTo(0)
+                
             }
         }
         else{
             cell.contentImg?.mb_setImage(withUrlString: model.image, placeholderImgName: "Ico_Main_Adv_aqy")
-            cell.contentImg!.snp.remakeConstraints{(make) -> Void in
-                make.bottom.equalTo(cell.adstraLabel!.snp.bottom)
-                make.top.equalTo(cell.titleLabel!.snp.top)
-                make.right.equalTo(-15)
-                make.width.equalTo(cell.contentImg!.snp.height)
-            }
+            cell.contentImg?.snp.updateConstraints{(make) -> Void in
+                make.width.equalTo(63)
+                
+            }        
         }
      
         return cell
@@ -126,7 +127,9 @@ extension MainViewController:UITableViewDelegate,UITableViewDataSource{
     
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        
+        let vc = ArticalDetailViewController()
+        vc.artical = self.viewModel.listArray[indexPath.section]!
+        self.navigationController?.pushViewController(vc, animated: true)
     }
     
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {

@@ -10,6 +10,9 @@ import UIKit
 import RxSwift
 import RxCocoa
 
+
+
+
 class Tools: NSObject {
     static func colorWithHex(hexValue:NSInteger,alpha:CGFloat)->UIColor
     {

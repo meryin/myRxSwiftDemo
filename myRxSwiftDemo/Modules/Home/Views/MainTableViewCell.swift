@@ -19,6 +19,7 @@ class MainTableViewCell: UITableViewCell {
     var readLabel:UILabel?
     var collectLabel:UILabel?
     var contentImg:UIImageView?
+    var tagLabel:UILabel = UILabel()
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -30,7 +31,12 @@ class MainTableViewCell: UITableViewCell {
 
     override init(style: UITableViewCellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
-        
+      
+        tagLabel = UILabel(textAlign: NSTextAlignment.center, font: 9, textColor: UIColor.orange)
+        self.contentView.addSubview(tagLabel)
+        tagLabel.layer.borderWidth = 0.8
+        tagLabel.layer.cornerRadius = 2
+        tagLabel.layer.borderColor = UIColor.orange.cgColor
         headImg = UIImageView(image: UIImage(named: "Ico_MCustomerCenter")!)
         self.contentView.addSubview(headImg!)
         userLabel = UILabel(font: 12, textColor: Color("0x333333"))
@@ -38,9 +44,10 @@ class MainTableViewCell: UITableViewCell {
         self.contentView.addSubview(userLabel!)
         timeLabel = UILabel(font: 12, textColor: Color("0x999999"))
         self.contentView.addSubview(timeLabel!)
+        timeLabel?.textAlignment = .left
         titleLabel = UILabel(font: 16, textColor: Color("0x111111"))
         self.contentView.addSubview(titleLabel!)
-        adstraLabel = UILabel(font: 14, textColor: Color("0x333333"))
+        adstraLabel = UILabel(font: 13, textColor: Color("0x888888"))
         adstraLabel?.numberOfLines = 0
         self.contentView.addSubview(adstraLabel!)
         contentImg = UIImageView()
@@ -61,21 +68,19 @@ class MainTableViewCell: UITableViewCell {
             make.top.equalTo(3)
         }
         userLabel!.snp.makeConstraints { (make) -> Void in
-            make.right.equalTo(self.timeLabel!.snp.left).offset(-5)
+            
             make.left.equalTo(self.headImg!.snp.right).offset(5)
             make.top.equalTo(3)
             make.bottom.equalTo(self.headImg!.snp.bottom)
         }
         timeLabel!.snp.makeConstraints { (make) -> Void in
-            make.right.greaterThanOrEqualTo(-15)
             make.left.equalTo(self.userLabel!.snp.right).offset(5)
             make.top.equalTo(3)
             make.bottom.equalTo(self.headImg!.snp.bottom)
+            make.right.equalTo(-15)
         }
-        
-        
         titleLabel!.snp.makeConstraints { (make) -> Void in
-            make.height.equalTo(18)
+            make.height.equalTo(25)
             make.left.equalTo(15)
             make.top.equalTo(self.headImg!.snp.bottom).offset(5)
             make.right.equalTo(self.contentImg!.snp.left).offset(-5)
@@ -90,14 +95,19 @@ class MainTableViewCell: UITableViewCell {
             make.bottom.equalTo(self.adstraLabel!.snp.bottom)
             make.top.equalTo(self.titleLabel!.snp.top)
             make.right.equalTo(-15)
-            make.width.equalTo(contentImg!.snp.height)
+            make.width.equalTo(63)
         }
-        
+        tagLabel.snp.makeConstraints { (make) -> Void in
+            make.left.equalTo(15)
+            make.right.equalTo(self.readLabel!.snp.left).offset(-5)
+            make.top.equalTo(self.adstraLabel!.snp.bottom).offset(5)
+            make.bottom.equalTo(-5)
+        }
         collectLabel!.snp.makeConstraints { (make) -> Void in
             make.bottom.equalTo(-3)
             make.left.equalTo(self.commandLabel!.snp.right).offset(5)
             make.top.equalTo(self.adstraLabel!.snp.bottom).offset(3)
-            make.right.equalTo(-15)
+            
         }
         commandLabel!.snp.makeConstraints { (make) -> Void in
             make.bottom.equalTo(self.collectLabel!.snp.bottom)
@@ -108,6 +118,7 @@ class MainTableViewCell: UITableViewCell {
         readLabel!.snp.makeConstraints { (make) -> Void in
             make.bottom.equalTo(self.collectLabel!.snp.bottom)
             make.top.equalTo(self.collectLabel!.snp.top)
+            make.left.equalTo(self.tagLabel.snp.right).offset(5)
         }
     }
     override func setSelected(_ selected: Bool, animated: Bool) {

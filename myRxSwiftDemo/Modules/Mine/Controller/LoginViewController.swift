@@ -27,8 +27,7 @@ class LoginViewController: UIViewController {
         let bu = UIButton.init(title: "注册", titleColor: UIColor.red, fontSize: 14)
         bu.frame = CGRect(x: 0, y: 0, width: 50, height: 25)
         bu.rx.tap.bind{
-//            self.navigationController?.pushViewController(ChangHeadImageViewController(), animated: true)
-                    self.navigationController?.pushViewController(RgisterViewController(), animated: true)
+            self.navigationController?.pushViewController(RgisterViewController(), animated: true)
         }.disposed(by: disposeBag)
         
         self.navigationItem.rightBarButtonItem = UIBarButtonItem(customView: bu)

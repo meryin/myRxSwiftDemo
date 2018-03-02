@@ -25,8 +25,17 @@ extension UIImageView{
         // 获取图片的 url
         if (withUrlString != nil)
        {
-        let url = URL(string: BaseURL + withUrlString!)
-        self.kf.setImage(with: url, placeholder: UIImage(named: placeholderImgName ?? ""), options: nil, progressBlock: nil, completionHandler: nil)
+        var url = URL(string: BaseURL + withUrlString!)
+        if (withUrlString?.contains("http"))!
+        {
+           url = URL(string:withUrlString!)
+        }
+        self.kf.setImage(with: url, placeholder: UIImage(named:placeholderImgName!), options: nil, progressBlock: { (key1, key2) in
+            
+        }, completionHandler: { (image, error, type, url) in
+            self.image = image
+        })
+
         }
         
     }

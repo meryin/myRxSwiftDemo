@@ -20,7 +20,7 @@ extension String {
         return substring(to: sInde)
     }
     
-    /// 截取人任意位置到结束
+    /// 截取任意位置到结束
     ///
     /// - Parameter end:
     /// - Returns: 截取后的字符串
@@ -109,6 +109,37 @@ extension String {
         let url = self.addingPercentEncoding(withAllowedCharacters: CharacterSet.urlQueryAllowed)
         return url!
     }
-    
-    
+    func nsRange(from range: Range<String.Index>) -> NSRange {
+        let from = range.lowerBound.samePosition(in: utf16)
+        let to = range.upperBound.samePosition(in: utf16)
+        return NSRange(location: utf16.distance(from: utf16.startIndex, to: from),
+                       length: utf16.distance(from: from, to: to))
+    }
+    func range(from nsRange: NSRange) -> Range<String.Index>? {
+        guard
+            let from16 = utf16.index(utf16.startIndex, offsetBy: nsRange.location, limitedBy: utf16.endIndex),
+            let to16 = utf16.index(from16, offsetBy: nsRange.length, limitedBy: utf16.endIndex),
+            let from = String.Index(from16, within: self),
+            let to = String.Index(to16, within: self)
+            else { return nil }
+        return from..<to
+    }
+
+    //返回第一次出现的指定子字符串在此字符串中的索引
+    //（如果backwards参数设置为true，则返回最后出现的位置）
+    func positionOf(sub:String, backwards:Bool = false)->Int {
+        var pos = -1
+        if let range = range(of:sub, options: backwards ? .backwards : .literal ) {
+            if !range.isEmpty {
+                pos = self.distance(from:startIndex, to:range.lowerBound)
+            }
+        }
+        return pos
+    }
+    //截取指定字符串后面的字符串
+    func subStringFrom(_ with:String)->String
+    {//比如“hello---world" with=”---“ 得到 world
+        let i = self.range(of: with)
+        return self[i?.upperBound..<self.endIndex]
+    }
 }

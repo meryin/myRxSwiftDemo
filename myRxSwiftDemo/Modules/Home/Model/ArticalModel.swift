@@ -22,6 +22,7 @@ class ArticalModel: PageBasicModel {
     var collect:Int?
     var command:Int?
     var image:String?
+    var abstract = ""
     var owner: UserInfoModel?
     var tag: ArticalTagModel?
     
@@ -40,6 +41,7 @@ class ArticalModel: PageBasicModel {
         image <- map["image"]
         owner <- map["owner"]
         tag <- map["tag"]
+        abstract <- map["abstract"]
     }
 }
 

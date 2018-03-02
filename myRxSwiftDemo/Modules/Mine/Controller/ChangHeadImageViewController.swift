@@ -108,7 +108,11 @@ extension  ChangHeadImageViewController:UIImagePickerControllerDelegate,UINaviga
           picker.dismiss(animated: true, completion:nil)
         if  imageSelected != nil {
             let data = UIImageJPEGRepresentation(imageSelected!, 0.3)
-            uploadImage(imageData: data!, filename:getUserHeadImageName(), url: "/haveFun/upload_head_image",blcok: { ( dict) in
+            uploadImage(imageData: data!, filename:getUserHeadImageName(name:"head_image"), url: "/haveFun/upload_head_image",blcok: { ( dict) in
+                if dict == nil
+                {
+                    return
+                }
                 guard let image = dict!["image"] as? String else{return}
                 let user = UserInfoModel.getUserInforModel()
                 user?.img = image

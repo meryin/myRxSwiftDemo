@@ -56,6 +56,29 @@ class loginViewModel: NSObject {
             }.addDisposableTo(disposeBag)
            
     }
+    class  func changeUserInfor(view:UITableView,key:String,value:String)
+    {
+        guard let my = UserInfoModel.getUserInforModel() ,let user_id = my.user_id else {
+            MBProgressHUD.showError("请先登录")
+            return
+        }
+        gitHubProvider.request(.changeUserInfor(key: key, value: value,user_id:user_id)) { result in
+            if case let .success(response) = result {
+                let UserModel = try? response.mapObject(UserInfoModel.self)                
+                if ( UserModel?.name?.isEmpty == false )
+                {
+                    UserInfoModel.saveUserInforModel(UserModel!)
+                    view.reloadData()
+                }
+ 
+            }
+            else {
+                MBProgressHUD.showError((result.error?.errorDescription)! )
+            }
+  
+        }
+        
+    }
    
 }
 

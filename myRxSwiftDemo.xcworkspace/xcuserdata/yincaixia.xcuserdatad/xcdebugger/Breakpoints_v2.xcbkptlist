@@ -108,7 +108,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "myRxSwiftDemo/General/Categories/Observable+ObjectMapper.swift"
-            timestampString = "539150347.528206"
+            timestampString = "541590144.758811"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "87"
@@ -124,7 +124,7 @@
                   moduleName = "myRxSwiftDemo"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/yincaixia/Documents/swift/%E8%87%AA%E5%BB%BA%E5%AD%A6%E4%B9%A0%E9%A1%B9%E7%9B%AE/myRxSwiftDemo/myRxSwiftDemo/General/Categories/Observable+ObjectMapper.swift"
-                  timestampString = "539158996.393626"
+                  timestampString = "541670965.145112"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "87"
@@ -139,7 +139,7 @@
                   moduleName = "myRxSwiftDemo"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/yincaixia/Documents/swift/%E8%87%AA%E5%BB%BA%E5%AD%A6%E4%B9%A0%E9%A1%B9%E7%9B%AE/myRxSwiftDemo/myRxSwiftDemo/General/Categories/Observable+ObjectMapper.swift"
-                  timestampString = "539158996.395004"
+                  timestampString = "541670965.147414"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "88"
@@ -155,14 +155,14 @@
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "myRxSwiftDemo/Modules/Mine/ViewModel/loginViewModel.swift"
-            timestampString = "539146229.251918"
+            filePath = "myRxSwiftDemo/Network/UploadManage.swift"
+            timestampString = "541672706.720867"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "48"
-            endingLineNumber = "48"
-            landmarkName = "init()"
-            landmarkType = "7">
+            startingLineNumber = "90"
+            endingLineNumber = "90"
+            landmarkName = "postData(url:param:blcok:)"
+            landmarkType = "9">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -171,14 +171,62 @@
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "myRxSwiftDemo/Network/APIManager.swift"
-            timestampString = "539146229.252014"
+            filePath = "myRxSwiftDemo/Network/UploadManage.swift"
+            timestampString = "541672706.7209359"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "105"
-            endingLineNumber = "105"
-            landmarkName = "task"
-            landmarkType = "24">
+            startingLineNumber = "86"
+            endingLineNumber = "86"
+            landmarkName = "postData(url:param:blcok:)"
+            landmarkType = "9">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "myRxSwiftDemo/Network/UploadManage.swift"
+            timestampString = "541672706.720987"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "95"
+            endingLineNumber = "95"
+            landmarkName = "postData(url:param:blcok:)"
+            landmarkType = "9">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "myRxSwiftDemo/Network/UploadManage.swift"
+            timestampString = "541672706.721033"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "94"
+            endingLineNumber = "94"
+            landmarkName = "postData(url:param:blcok:)"
+            landmarkType = "9">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "myRxSwiftDemo/Network/UploadManage.swift"
+            timestampString = "541672706.721078"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "70"
+            endingLineNumber = "70"
+            landmarkName = "uploadImage(imageData:filename:url:blcok:)"
+            landmarkType = "9">
          </BreakpointContent>
       </BreakpointProxy>
    </Breakpoints>

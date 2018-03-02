@@ -12,6 +12,7 @@ import ObjectMapper
 class ArticalTagModel: Mappable {
     
     var tag_id:Int?
+    var article_count:Int?
     var tag_name:String?
     var create_Time:String?
     var tag_abstract:String?
@@ -30,6 +31,7 @@ class ArticalTagModel: Mappable {
         tag_abstract <- map["tag_abstract"]
         tag_img <- map["tag_img"]
         createdByUser <- map["createdByUser"]
+        article_count <- map["article_count"]
        
     }
 }

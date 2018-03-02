@@ -31,7 +31,7 @@ class ListCollectionViewCell: UICollectionViewCell {
         view.addSubview(contentLabel)
         self.contentView.addSubview(backImgV)
         view.layer.cornerRadius = 5
-        view.layer.borderColor = Color("0xf8f8f8").cgColor
+        view.layer.borderColor = Color("0xdddddd").cgColor
         view.layer.borderWidth = 1
         backImgV.clipsToBounds = true
         backImgV.contentMode = .scaleAspectFill

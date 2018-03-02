@@ -97,4 +97,68 @@ extension ObservableType {
 
 }
 
-
+// MARK: - Json -> Model
+extension Response {
+    public func mapObjectResult() throws -> Bool {
+        
+        guard let json = try mapJSON() as? [String : Any] else {
+            return false
+        }
+        
+        if let jsondic = (json["result"] as? String)
+        {
+            MBProgressHUD.showSuccess(jsondic)
+            return true
+        }
+        else if let des = (json["desc"] as? String){
+            MBProgressHUD.showError(des)
+            return false
+        }
+        return false
+        
+    }
+    
+    // 将Json解析为单个Model
+    public func mapObject<T: BaseMappable>(_ type: T.Type) throws -> T {
+        
+        guard let json = try mapJSON() as? [String : Any] else {
+            throw MoyaError.jsonMapping(self)
+        }
+        
+        if let jsondic = (json["result"] as? [String : Any])
+        {
+            MBProgressHUD.showSuccess(json["desc"] as! String)
+            guard let object = Mapper<T>().map(JSONObject: jsondic) else {
+                throw MoyaError.jsonMapping(self)
+            }
+            
+            return object
+        }
+        else {
+            MBProgressHUD.showError(json["desc"] as! String)
+            throw MoyaError.jsonMapping(self)
+        }
+        
+        
+    }
+    
+    // 将Json解析为多个Model，返回数组，对于不同的json格式需要对该方法进行修改
+    public func mapArray<T:BaseMappable>(_ type: T.Type) throws -> [T] {
+        
+        guard let json = try mapJSON() as? [String : Any] else {
+            throw MoyaError.jsonMapping(self)
+        }
+        
+        if let jsonArr = (json["result"] as? [[String : Any]])
+        {
+             MBProgressHUD.showSuccess(json["desc"] as! String)
+           return Mapper<T>().mapArray(JSONArray: jsonArr)
+        }
+        else {
+            MBProgressHUD.showError(json["desc"] as! String)
+            throw MoyaError.jsonMapping(self)
+        }
+        
+        
+    }
+}

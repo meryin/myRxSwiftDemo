@@ -36,6 +36,7 @@ extension UIButton {
         self.setTitleColor(titleColor, for: UIControlState.normal)
         self.titleLabel?.font = UIFont.systemFont(ofSize: fontSize!)
         self.sizeToFit()
+        
     }
     
     //有背景颜色和文字的按钮

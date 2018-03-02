@@ -61,18 +61,18 @@ class BaseTabBarViewController: UITabBarController,UITabBarControllerDelegate {
         
     }
     func tabBarController(_ tabBarController: UITabBarController, shouldSelect viewController: UIViewController) -> Bool {
-        let arr = (viewController as! BaeseNavigationController).viewControllers
-        if arr.count > 0
-        {
-            if arr[0] is WriteViewController
-            {
-                
-                let vc = self.viewControllers?[tabBarController.selectedIndex] as! BaeseNavigationController
-                vc.pushViewController(WKWebViewController(), animated: true)
-                
-                return false
-            }
-        }
+//        let arr = (viewController as! BaeseNavigationController).viewControllers
+//        if arr.count > 0
+//        {
+//            if arr[0] is WriteViewController
+//            {
+//
+//                let vc = self.viewControllers?[tabBarController.selectedIndex] as! BaeseNavigationController
+//                vc.pushViewController(WKWebViewController(), animated: true)
+//
+//                return false
+//            }
+//        }
         return true
     }
     

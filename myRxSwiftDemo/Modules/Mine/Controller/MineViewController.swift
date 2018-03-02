@@ -10,7 +10,7 @@ import UIKit
 import SnapKit
 import RxSwift
 import RxCocoa
-
+import MJRefresh
 class MineViewController: UIViewController,UITableViewDelegate,UITableViewDataSource {
     let disposeBag = DisposeBag()
     let headImgV:UIImageView = UIImageView(imgName: "Ico_MCustomerCenter")
@@ -45,6 +45,7 @@ class MineViewController: UIViewController,UITableViewDelegate,UITableViewDataSo
         let w = WindowWidth * 0.22
         headImgV.corner(radii: w/2.0)
         headImgV.clipsToBounds = true
+        headImgV.contentMode = .scaleAspectFill
         headImgV.snp.makeConstraints { (make) in
             make.width.height.equalTo(w)
             make.centerX.equalTo(topView)
@@ -59,6 +60,9 @@ class MineViewController: UIViewController,UITableViewDelegate,UITableViewDataSo
         tableView.register(UITableViewCell.self, forCellReuseIdentifier: "cell")
         tableView.delegate = self
         tableView.dataSource = self
+//        tableView.mj_header = MJRefreshNormalHeader.init(refreshingBlock: {
+//           
+//        })
         
     }
     func reloadView()
@@ -98,6 +102,7 @@ class MineViewController: UIViewController,UITableViewDelegate,UITableViewDataSo
             nameLabel.text = "登录"
             headImgV.image = UIImage(named: "Ico_MCustomerCenter")
         }
+        tableView.reloadData()
     }
     func loginAction()
     {
@@ -141,8 +146,7 @@ class MineViewController: UIViewController,UITableViewDelegate,UITableViewDataSo
         }
         else if (indexPath.row == 1)
         {
-            let vc = WKWebViewController()
-            vc.urlstring = "http://127.0.0.1:8000/haveFun/login"
+            let vc = MineTagListViewController()
             self.navigationController?.pushViewController(vc, animated: true)
         }
         else if (indexPath.row == 2)
